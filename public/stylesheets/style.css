@@ -1,3 +1,7 @@
+body {
+  background: skyblue;
+  overflow: hidden; }
+
 .bird {
   position: absolute;
   width: 40px;
@@ -12,6 +16,17 @@
   width: 100px;
   border: 1px solid;
   position: absolute;
-  margin-top: 100px; }
+  top: 5%;
+  left: 90%;
+  background: snow;
+  color: black; }
+
+.hunter {
+  height: 100px;
+  width: 100px;
+  background: grey;
+  position: absolute;
+  bottom: 0;
+  left: 45%; }
 
 /*# sourceMappingURL=style.css.map */
