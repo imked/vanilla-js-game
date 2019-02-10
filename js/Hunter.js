@@ -1,8 +1,13 @@
-export default class Hunter {
+import Entity from './Entity'
+export default class Hunter extends Entity {
+  //damit erhält Hunter alle methoden die wir in Entity haben
   position = window.innerWidth / 2 // damit wir in der Mitte starten
   speed = 0 // new
-  constructor() {
-    this.el = this.render()
+  constructor(config) {
+    super() //ruft den Constructor von Entity auf
+    const { onShoot } = config
+    this.onShoot = onShoot
+    this.el = this.render('hunter')
     this.setupMovement()
   }
 
@@ -17,6 +22,8 @@ export default class Hunter {
         this.speed = -10
       } else if (event.key === 'ArrowRight') {
         this.speed = 10
+      } else if (event.key === ' ') {
+        this.onShoot(this.position) // Das ist die Pos. von dem Hunter, die an die Bullet übergeben wird.
       }
     })
 
@@ -25,12 +32,5 @@ export default class Hunter {
         this.speed = 0
       }
     })
-  }
-
-  render() {
-    const el = document.createElement('div')
-    el.className = 'hunter'
-    document.body.insertAdjacentElement('beforeend', el)
-    return el
   }
 }
